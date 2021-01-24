@@ -1,0 +1,4 @@
+1. I have succesfully installed and am writing this from a fresh Ubuntu 18.04 LTS install!
+2. I am also up on Git! (if you can read this message =D)
+
+-Jordan
