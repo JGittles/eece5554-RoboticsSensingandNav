@@ -1,0 +1,37 @@
+function d = point_to_line(pt, v1, v2)
+      a = v1 - v2;
+      b = pt - v2;
+      d = norm(cross(a,b)) / norm(a);
+
+
+dynamic = rosbag('dynamic-updated.bag');
+
+rosbag info dynamic-updated.bag;
+
+gps = select(dynamic,'Topic', '/gps_data');
+
+msg = readMessages(gps, 'DataFormat', 'struct');
+
+easting = cellfun(@(m) double(m.UtmEasting),msg);
+northing = cellfun(@(m) double(m.UtmNorthing),msg);
+seq = cellfun(@(m) double(m.Header.Seq),msg);
+Zone = 19;
+Letter = 'T';
+
+easting_ref=[325306.20 325470.72]
+northing_ref=[4693765.19 4693755.53]
+val1=[325306.20 4693765.19]
+val2=[325470.72 4693755.53]
+
+figure(1);
+scatter(easting,northing, 'b');
+hold
+plot(easting_ref,northing_ref,'g');
+
+point = [easting northing]
+a = v1 - v2;
+b = pt - v2;
+d = norm(cross(a,b)) / norm(a);
+
+
+
